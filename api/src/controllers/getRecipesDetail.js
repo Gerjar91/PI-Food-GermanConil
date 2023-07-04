@@ -14,6 +14,7 @@ const getRecipesDetail = async (req, res) => {
     try {
         let id = req.params.id
         const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`;
+
         let { data } = await axios(url)
         if (data) {
             const recipe = {
@@ -23,8 +24,16 @@ const getRecipesDetail = async (req, res) => {
                 summary: data.summary,
                 diets: data.diets,
                 healthScore: data.healthScore,
-                cuisines:data.cuisines,
-                instructions:data.instructions
+                steps: data.analyzedInstructions[0].steps.map((elem) => {
+                    return {
+                        number: elem.number,
+                        step: elem.step,
+                        ingredients:elem.ingredients.map(obj => obj.name,    
+                        )
+                    }
+                }
+
+                )
             }
             return res.status(200).json(recipe)
         } else {

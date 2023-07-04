@@ -10,12 +10,18 @@ require('dotenv').config();
 const axios = require("axios");
 const { API_KEY } = process.env;
 
-const postRecipe = (req,res) => {
-let recipe = req.body
+const postRecipe = (req, res) => {
+
+    try {
+        let recipe = req.body
+
+    } catch (error) {
+
+    }
 
 
 
 }
-module.exports= postRecipe
+module.exports = postRecipe
 
 
