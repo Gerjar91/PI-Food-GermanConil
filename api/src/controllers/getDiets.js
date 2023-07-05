@@ -17,7 +17,6 @@ const alldiets = [
 ];
 
 const getDiets = async (req, res) => {
-
     try {
         const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`;
         let {data} = await axios(url)
