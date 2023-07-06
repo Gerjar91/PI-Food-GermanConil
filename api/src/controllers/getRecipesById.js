@@ -8,6 +8,8 @@ Debe funcionar tanto para las recetas de la API como para las de la base de dato
 require('dotenv').config();
 const axios = require("axios");
 const { API_KEY } = process.env;
+const { Recipe } = require("../db");
+const { Op } = require('sequelize');
 
 
 const getRecipesDetail = async (req, res) => {
@@ -18,11 +20,11 @@ const getRecipesDetail = async (req, res) => {
         // verificamos el tipo de dato del ID (number o string )
         let source = isNaN(id) ? "bdd" : "api"
         const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=false`;
-        console.log(source);
+
         // Si ID es number , buscamos en la API
         if (source == "api") {
             let { data } = await axios(url)
-            const recipe = {
+            const recipeApi = {
                 id: data.id,
                 name: data.title,
                 image: data.image,
@@ -39,11 +41,20 @@ const getRecipesDetail = async (req, res) => {
                 }
                 )
             }
-            return recipe ? res.status(200).json(recipe) : res.status(404).json("Not Found")
+            return recipeApi ? res.status(200).json(recipeApi) : res.status(404).json("Not Found")
         }
+        
         // SI NO ES TIPO NUMBER BUSCAMOS EN LAS RECETAS DE LA BDD 
         if (source == "bdd") {
-
+            console.log(id);
+            const recipeBdd = await Recipe.findAll({
+                where: {
+                    id: {
+                        [Op.eq]: id // para realizar una comparación de igualdad en la columna id 
+                    }
+                }
+            })
+            return recipeBdd ? res.status(200).json(recipeBdd) : res.status(404).json("Not Found")
         }
 
     } catch (error) {

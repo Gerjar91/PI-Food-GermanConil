@@ -3,13 +3,6 @@
 Deberás crear dos modelos para tu base de datos. Una será para las recetas y la otra será para los tipos de dietas (pueden llevar el nombre que tu quieras). La relación entre ambos modelos debe ser de muchos a muchos. A continuación te dejamos las propiedades que debe tener cada modelo.
 
 📍 MODELO 1 | Recipe
-
-ID. *
-Nombre. *
-Imagen. *
-Resumen del plato. *
-Nivel de comida saludable (health score). *
-Paso a paso. *
 */
 
 const { DataTypes } = require('sequelize');
@@ -20,6 +13,7 @@ module.exports = (sequelize) => {
   sequelize.define('recipe', {
     id: {
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
@@ -42,6 +36,6 @@ module.exports = (sequelize) => {
     steps: {
       type: DataTypes.ARRAY(DataTypes.JSON),
       allowNull: false,
-    }
-  });
+    },
+  }, { timestamps: false }); // eliminamos tablas por default 
 };
