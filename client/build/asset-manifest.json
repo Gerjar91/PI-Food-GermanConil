@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6891fb1b.chunk.css",
+    "main.js": "/static/js/main.b3752050.chunk.js",
+    "main.js.map": "/static/js/main.b3752050.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fba184f7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fba184f7.js.map",
+    "static/js/2.ebab4f39.chunk.js": "/static/js/2.ebab4f39.chunk.js",
+    "static/js/2.ebab4f39.chunk.js.map": "/static/js/2.ebab4f39.chunk.js.map",
+    "static/js/3.82de5acd.chunk.js": "/static/js/3.82de5acd.chunk.js",
+    "static/js/3.82de5acd.chunk.js.map": "/static/js/3.82de5acd.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.6891fb1b.chunk.css.map": "/static/css/main.6891fb1b.chunk.css.map",
+    "static/js/2.ebab4f39.chunk.js.LICENSE.txt": "/static/js/2.ebab4f39.chunk.js.LICENSE.txt",
+    "static/media/landingPage.module.css": "/static/media/spaghetti-1932466_1280.78b61edc.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fba184f7.js",
+    "static/js/2.ebab4f39.chunk.js",
+    "static/css/main.6891fb1b.chunk.css",
+    "static/js/main.b3752050.chunk.js"
+  ]
+}

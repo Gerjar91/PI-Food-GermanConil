@@ -10,8 +10,8 @@ const { Diets } = require('../db')
 
 const postRecipe = async (req, res) => {
     try {
-        // creamos una nueva receta con lo que llega del body 
-        let { name, image, summary, healthScore, steps, dietId } = req.body
+        // creamos una nueva receta con lo que llega por  body 
+        let { name, image, summary, healthScore, steps, dietname } = req.body
         const newRecipe = await Recipe.create({
             name,
             image,
@@ -20,10 +20,9 @@ const postRecipe = async (req, res) => {
             steps
         })
         //relacionar con las diets de la base de dato 
-
-
-
-
+        //buscamos en la BDD que diet coincide con la dieta ingresada
+        const diets = await Diets.findOne({ where: { name: dietname } });
+        await newRecipe.addDiets(diets.dataValues.id)
 
         return res.status(200).json(newRecipe)
     } catch (error) {

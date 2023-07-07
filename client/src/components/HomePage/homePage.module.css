@@ -1,0 +1,211 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f0ea;
+    height: 1550px;
+    width: 100%;
+    /*          background-image: url("../../img/tabla-vacia-tablero-madera-delante-fondo-borroso-madera-marron-perspectiva-sobre-falta-definicion-cafeteria-puede-ser-utilizado-exhibicion-o-montaje-sus-productos-preparado-exhibicion-producto.jpg");
+ */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(1);
+    overflow-y: scroll;
+
+}
+
+.container h4 {
+    margin-top: 80px;
+    font-size: 40px;
+    color: #141010;
+}
+.container h3 {
+    
+    font-size: 14px;
+    color: #141010;
+    margin-top: 20px;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container h1 {
+    color: aliceblue;
+    font-family: Helvetica;
+    font-size: 30px;
+    margin-top: 30px;
+
+}
+
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 80px;
+    overflow: hidden;
+    margin-top: 40px;
+    text-align: center;
+
+}
+
+.nav h3 {
+    padding: 10px;
+    color: #464242;
+}
+
+.nav button {
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+    opacity: .5;
+    border-radius: 50%;
+    font-size: 70px;
+    background: none;
+    border: none;
+    background-color: #e4e2e2;
+    color: #101010;
+    padding: 5px 10px;
+    font-size: 24px;
+}
+
+.nav button:hover {
+    opacity: .8;
+
+}
+
+.container h2 {
+    color: aliceblue;
+    font-family: Helvetica;
+    font-size: 25px;
+    margin-top: 2px;
+}
+
+.container label {
+    color: aliceblue
+}
+
+.form {
+    border-radius: 20px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.form label {
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.form button {
+    margin-top: 20px;
+
+}
+
+.button {
+    background-color: rgb(234, 195, 20);
+    text-decoration: none;
+    color: black;
+    padding: 6px 20px;
+    border: none;
+    font-family: Helvetica;
+    margin-top: 50px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    box-shadow: 0px 2px 4px rgba(230, 209, 51, 0.4);
+
+}
+
+.button:hover {
+    background-color: rgb(224, 208, 135)
+}
+
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: -20px;
+    width: 90%;
+    height: 80%;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 1px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.cardExtra {
+    grid-column: span 2;
+    /* Ocupar 2 columnas en la rejilla */
+    grid-row: span 2;
+    /* Ocupar 2 filas en la rejilla */
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    height: 250px;
+    width: 100%;
+    background-color: rgb(227, 229, 230);
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.footerLeft {
+    width: 70%;
+}
+
+.footerRight {
+    width: 50%;
+    margin-left: 50px;
+}
+
+.footer h3 {
+    color: rgb(101, 104, 107);
+    font-family: Helvetica;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+.footer p {
+    color: rgb(74, 78, 81);
+    font-family: Helvetica;
+    font-size: 16px;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    color: rgb(74, 78, 81);
+    font-family: Helvetica;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
