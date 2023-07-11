@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'; // switch no ROutes por la react routerdom V5
-import LandingPage from './components/LandingPage/landingPage';
+import LandingPage from './Pages/LandingPage/landingPage';
 import React from 'react';
-import HomePage from './components/HomePage/homePage';
+import HomePage from './Pages/HomePage/homePage';
 import SearchBar from './components/SearchBar/searchBar';
 import FormRecipe from './components/FormRecipe/formRecipe';
+import DetailPage from './Pages/DetailPage/detailPage';
 
 function App() {
   return (
@@ -11,13 +12,13 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
       </Switch>
-    <SearchBar/>
+      <SearchBar />{/* la search bar queda fija en todas estas pantallas */}
       <Switch>
         <Route exact path="/homePage" component={HomePage} />
         <Route exact path="/formRecipe" component={FormRecipe} />
+        <Route exact path="/detailPage/:id" component={DetailPage} />
       </Switch>
     </BrowserRouter>
   );
 }
-
 export default App;

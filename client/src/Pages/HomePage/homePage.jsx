@@ -1,24 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import style from "./homePage.module.css";
-import CardPanel from "../CardPanel/cardPanel";
-const HomePage = () => {
-    return (
+import CardPanel from "../../components/CardPanel/cardPanel";
 
+
+
+const HomePage = () => {
+
+    //Handler para manipular el paginado 
+    const [page, setpage] = useState(0)
+    const handlerPageAdvance = () => {
+        setpage(page + 1)
+    }
+    const handlerPageBack = () => {
+        setpage(page - 1)
+    }
+
+    return (
         <div>
             <div className={style.container}>
                 <h4>SOME RECIPES</h4>
-                <h3>MEXICAN FOOD</h3>
-                <CardPanel />
-                <h3>AMERICAN FOOD</h3>
-                <CardPanel />
-                <h3>MEXICAN FOOD</h3>
-                <CardPanel />
-           
+                <CardPanel page={page} />
                 <div className={style.nav}>
-                    <button>⇦</button>
-                    <h3>PAGE 01</h3>
-                    <button>⇨</button>
+                    <button onClick={handlerPageBack} disabled={page === 0 ? true : false}>⇦</button>
+                    <h3>{`PAGE ${page}`}</h3>
+                    <button onClick={handlerPageAdvance} >⇨</button>
                 </div>
             </div>
             <div className={style.footer}>

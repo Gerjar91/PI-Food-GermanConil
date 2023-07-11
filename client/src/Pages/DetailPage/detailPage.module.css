@@ -1,0 +1,120 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 80px;
+    padding-right: 80px;
+    justify-content: center;
+    align-content: center;
+}
+
+.summary {
+    background-color: rgb(233, 238, 242);
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 25px;
+    margin-top: 80px;
+}
+
+.summary h1 {
+    color: rgb(43, 42, 40);
+}
+
+.summary img {
+    width: 300px;
+    height: 200px;
+    margin-top: 30px;
+}
+
+.summary h3 {
+    font-size: 22px;
+    color: #666262;
+}
+
+.summary h2 {
+    font-size: 20px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin-bottom: 250px;
+
+}
+
+.diets {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #6a6262;
+    width: 99%;
+    margin-top: 20px;
+    height: auto;
+    text-align: center;
+    padding: 8px;
+    align-items: center;
+}
+.loanding{
+    background-color: aqua;
+    width:300px ;
+    height: 200px;
+}
+.diets h4{
+    color: #d5cdcd;
+    margin: 0px;
+}
+.diets li {
+    color: #cfc6c6;
+    margin-left: 15px;
+    list-style-type: none;
+
+}
+
+
+.containersteps {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:3px;
+    margin-top: 10px;
+
+}
+
+.step{
+    background-color: #dee2e6;
+    width: 33%;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+.step p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.step h5{
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+
+  
+  /* Estilo para el select plegado */
+  .select[multiple] {
+    height: 30px;
+    width: 200px;
+    overflow: hidden;
+  }
+  
+  /* Estilo para el select desplegado */
+  .select[multiple]:focus {
+    height: 2px;
+  }

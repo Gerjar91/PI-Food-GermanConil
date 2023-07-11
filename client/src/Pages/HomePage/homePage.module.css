@@ -2,29 +2,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f1f0ea;
-    height: 1550px;
+    height: auto;
     width: 100%;
-    /*          background-image: url("../../img/tabla-vacia-tablero-madera-delante-fondo-borroso-madera-marron-perspectiva-sobre-falta-definicion-cafeteria-puede-ser-utilizado-exhibicion-o-montaje-sus-productos-preparado-exhibicion-producto.jpg");
- */
+ background-image: url("../../img/tabla-vacia-tablero-madera-delante-fondo-borroso-madera-marron-perspectiva-sobre-falta-definicion-cafeteria-puede-ser-utilizado-exhibicion-o-montaje-sus-productos-preparado-exhibicion-producto.jpg");
+
     background-size: cover;
     background-position: center;
     filter: brightness(1);
     overflow-y: scroll;
 
 }
+.container h2 {
+    color: aliceblue;
+    font-family: Helvetica;
+    font-size: 15px;
+    margin-top: 2px;
+}
 
 .container h4 {
     margin-top: 80px;
-    font-size: 40px;
+    font-size: 20px;
     color: #141010;
 }
-.container h3 {
-    
-    font-size: 14px;
-    color: #141010;
-    margin-top: 20px;
-}
+
 
 .container::before {
     content: "";
@@ -52,14 +52,15 @@
     width: 400px;
     height: 80px;
     overflow: hidden;
-    margin-top: 40px;
+    margin-top: 1px;
     text-align: center;
 
 }
 
 .nav h3 {
     padding: 10px;
-    color: #464242;
+    color: #fffdfd;
+    font-size: 20px;
 }
 
 .nav button {
@@ -68,7 +69,7 @@
     width: 50px;
     overflow: hidden;
     text-align: center;
-    opacity: .5;
+    opacity: .7;
     border-radius: 50%;
     font-size: 70px;
     background: none;
@@ -78,18 +79,16 @@
     padding: 5px 10px;
     font-size: 24px;
 }
+.nav button.disabled {
+    opacity: 0.1;
+    color: aqua;
+  }
 
-.nav button:hover {
-    opacity: .8;
+.nav button:hover:not(.disabled) {
+    opacity: 0.8;
+    /* Otros estilos para el botón cuando no está desactivado y el cursor está sobre él */
+  }
 
-}
-
-.container h2 {
-    color: aliceblue;
-    font-family: Helvetica;
-    font-size: 25px;
-    margin-top: 2px;
-}
 
 .container label {
     color: aliceblue
@@ -156,9 +155,7 @@
 
 .cardExtra {
     grid-column: span 2;
-    /* Ocupar 2 columnas en la rejilla */
     grid-row: span 2;
-    /* Ocupar 2 filas en la rejilla */
 }
 
 .footer {

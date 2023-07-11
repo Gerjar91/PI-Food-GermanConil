@@ -6,12 +6,10 @@ import { Link } from 'react-router-dom'; // no esta disponible usenavigate para 
 
 const LandingPage = () => {
 
-
-
   return (
     <div className={style.container}>
       <div className={style.form}>
-        <h1>SINGLE PAGE  <br/>APLICATION</h1>
+        <h1>SINGLE PAGE  <br />APLICATION</h1>
         <h2>About food</h2>
         <label>User</label>
         <input></input>
