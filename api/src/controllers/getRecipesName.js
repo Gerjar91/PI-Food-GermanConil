@@ -20,8 +20,8 @@ const getRecipesName = async (req, res) => {
     try {
         let name = req.query.name;
         let { data } = await axios(url);
+        console.log(name);
 
-        
         // FILTRO PARA RECETAS QUE CONTENGAN LA PALABRA NAME EN LA API 
         let recipesFromApi = data.results.filter(el =>
             el.title.toLowerCase().includes(name.toLowerCase()));
@@ -34,15 +34,7 @@ const getRecipesName = async (req, res) => {
                 name: el.title,
                 image: el.image,
                 diets: el.diets,
-                summary: el.summary.replace(/<[^>]+>/g, ''),
-                healthScore: el.healthScore,
-                steps: el.analyzedInstructions[0]?.steps.map((elem) => {
-                    return {
-                        number: elem.number,
-                        step: elem.step,
-                        ingredients: elem.ingredients.map(obj => obj.name),
-                    }
-                }),
+                HS: el.healthScore,
             }
         });
 
@@ -65,7 +57,7 @@ const getRecipesName = async (req, res) => {
         // VERIFICAR SI SE ENCONTRÓ O NO LA RECETA 
         if (recipesFromApi.length) {
             return res.status(200).json(recipesFromApi);
-        }
+        } return res.status(200).json({error:"there are no recipes matching that name"})
     } catch (error) {
         return res.status(500).send(error.message);
     }

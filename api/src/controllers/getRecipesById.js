@@ -46,7 +46,6 @@ const getRecipesDetail = async (req, res) => {
         
         // SI NO ES TIPO NUMBER BUSCAMOS EN LAS RECETAS DE LA BDD 
         if (source == "bdd") {
-            console.log(id);
             const recipeBdd = await Recipe.findAll({
                 where: {
                     id: {
