@@ -8,8 +8,6 @@ const SearchBar = () => {
 
     const dispatch = useDispatch()
 
-
-
     // en funcion de la option seleccionada despachamos la action adecuada 
     const handlerOptions = (event) => {
 
@@ -26,17 +24,7 @@ const SearchBar = () => {
                 return
         }
     }
-    // en funcion de la diets seleccionada despachamos la action con una lista de dietas 
-    let diets = []
-    const handlerDiets = (event) => {
-        if (!diets.includes(event.target.value) && event.target.value !== "") {
-            diets.push(event.target.value)
-        } else { // si se vuelve a seleccionar la eliminamos de la lista 
-            diets = diets.filter(item => item !== event.target.value)
-        }
-        dispatch(dietsFilter(diets))
-    }
-
+   
     return (
         <div className={style.container}>
             <h2>Search recipe </h2>
@@ -49,22 +37,6 @@ const SearchBar = () => {
                 <option value="OrderAsc">HS ASCENDENTE</option>
                 <option value="OrderDes">HS DESCENDENTE</option>
                 <option value="OrderAlf" >A-Z</option>
-            </select>
-
-            <p>SEARCH FOR DIETS</p> {/* filtrar por dietas  */}
-            <select multiple onClick={handlerDiets}>
-                <option value="">DIETS</option>
-                <option value="gluten free" >GLUTEN FREE</option>
-                <option value="ketogenic" >KETOGENIC</option>
-                <option value="lacto vegetarian" >LACTO-VEGETARIAN</option>
-                <option value="ovo vegetarian" >OVO-VEGETARIAN</option>
-                <option value="vegan" >VEGAN</option>
-                <option value="pescetarian" >PESCETARIAN</option>
-                <option value="paleo" >PALEO</option>
-                <option value="primal" >PRIMAL</option>
-                <option value="dairy free" >DAIRY FREE</option>
-                <option value="whole 30" >WHOLE 30</option>
-                <option value="lacto ovo vegetarian" >LACTO OVO</option>
             </select>
             <label>Create Recipe</label>
             <Link className={style.button} to="/formRecipe">Create</Link>

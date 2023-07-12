@@ -37,16 +37,16 @@ const DetailPage = () => {
 
           <img src={detailRecipe.image} alt={detailRecipe.name} />
         }
-        <h3>{detailRecipe.summary}</h3>
+        <h3>{detailRecipe?.summary}</h3>
         <h2>HS: {detailRecipe.healthScore}</h2>
       </div>
       <div className={style.diets}>
         <h4>    DIETS: </h4>
-        {detailRecipe.diets.map((el, index) => (
+        {detailRecipe.diets?.map((el, index) => (
           <li key={index}> #{el}</li>
         ))}
       </div>
-  
+
       <div className={style.containersteps}>
         {detailRecipe.steps.map((el, index) => (
           <div key={index} className={style.step}>

@@ -2,16 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
+    height: 950px;
     width: 100%;
- background-image: url("../../img/tabla-vacia-tablero-madera-delante-fondo-borroso-madera-marron-perspectiva-sobre-falta-definicion-cafeteria-puede-ser-utilizado-exhibicion-o-montaje-sus-productos-preparado-exhibicion-producto.jpg");
-
+    background-image: url("../../img/tabla-vacia-tablero-madera-delante-fondo-borroso-madera-marron-perspectiva-sobre-falta-definicion-cafeteria-puede-ser-utilizado-exhibicion-o-montaje-sus-productos-preparado-exhibicion-producto.jpg");
     background-size: cover;
     background-position: center;
     filter: brightness(1);
     overflow-y: scroll;
 
 }
+
+.containerCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 .container h2 {
     color: aliceblue;
     font-family: Helvetica;
@@ -49,45 +56,70 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 400px;
-    height: 80px;
+    width: 200px;
+    height: 35px;
     overflow: hidden;
-    margin-top: 1px;
+    margin-top: 80px;
     text-align: center;
+    margin-bottom: 6px;
+    margin-right: 100px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f1f0ea;
+    box-shadow: 0px 2px 4px rgba(52, 51, 49, 0.9);
 
 }
 
 .nav h3 {
-    padding: 10px;
-    color: #fffdfd;
+    width: 70px;
+    padding: 20px;
+    color: #060606;
+    font-size: 16px;
+}
+
+.containerNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.containerNav h1 {
+    color: #e0bb00;
+    margin-top: 99px;
     font-size: 20px;
+    margin-right: 270px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .nav button {
     padding: 10px;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     overflow: hidden;
     text-align: center;
     opacity: .7;
     border-radius: 50%;
-    font-size: 70px;
+    font-size: 19px;
     background: none;
     border: none;
-    background-color: #e4e2e2;
-    color: #101010;
+    background-color: #161616;
+    color: #f4f0f0;
     padding: 5px 10px;
-    font-size: 24px;
+    transition: 0.3s;
 }
+
 .nav button.disabled {
     opacity: 0.1;
-    color: aqua;
-  }
+}
 
 .nav button:hover:not(.disabled) {
     opacity: 0.8;
-    /* Otros estilos para el botón cuando no está desactivado y el cursor está sobre él */
-  }
+    scale: 1.1;
+}
 
 
 .container label {

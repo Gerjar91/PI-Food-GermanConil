@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "./homePage.module.css";
 import CardPanel from "../../components/CardPanel/cardPanel";
+import FilterDiets from "../../components/FilterDiets/filterDiets";
 
 
 
@@ -18,12 +19,17 @@ const HomePage = () => {
     return (
         <div>
             <div className={style.container}>
-                <h4>SOME RECIPES</h4>
-                <CardPanel page={page} />
-                <div className={style.nav}>
-                    <button onClick={handlerPageBack} disabled={page === 0 ? true : false}>⇦</button>
-                    <h3>{`PAGE ${page}`}</h3>
-                    <button onClick={handlerPageAdvance} >⇨</button>
+                <div className={style.containerNav}>
+                    <div className={style.nav}>
+                        <button onClick={handlerPageBack} disabled={page === 0 ? true : false}>⇦</button>
+                        <h3>{`PAGE ${page}`}</h3>
+                        <button onClick={handlerPageAdvance} >⇨</button>
+                    </div>
+                    <h1>SINGLE PAGE APLICATION  </h1>
+                </div>
+                <div className={style.containerCard}>
+                    <CardPanel page={page} />
+                    <FilterDiets />
                 </div>
             </div>
             <div className={style.footer}>
