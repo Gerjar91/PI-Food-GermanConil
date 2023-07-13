@@ -14,7 +14,7 @@ const Card = ({ name, image, diets, HS }) => {
                         return <li key={index}>{el}</li>
                     })}
                 </div>
-                <div  className={style.hs}>
+                <div className={style.hs}>
                     <h3>HS: {HS}</h3>
                 </div>
             </div>

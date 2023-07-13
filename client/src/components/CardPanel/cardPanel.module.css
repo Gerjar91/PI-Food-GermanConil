@@ -29,7 +29,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 1000px;
-    height: 278px;
+    height: 312px;
     margin-top: 15px;
     border-radius: 10px;
     background-color: #f1f0ea;
@@ -53,4 +53,12 @@
 .message h3 {
     font-size: 30px;
     color: rgb(236, 100, 9);
+    margin-bottom: 100px;
+}
+.message img {
+    position: absolute;
+    width: 500px;
+    margin-left: 600px;
+    margin-top: 700px;
+ 
 }

@@ -4,23 +4,36 @@
   position: fixed;
   z-index: 9999;
   align-items: center;
+  align-content: center;
   height: 60px;
   width: 100vw;
   background-color: rgb(217, 156, 25);
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 12px;
   box-shadow: 0px 2px 4px rgba(52, 51, 49, 0.9);
   color: aliceblue;
 }
 
+.container div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px;
+  width: auto;
+  height: auto;
+}
+
+
 .container p {
-  font-size: 10px;
+  font-size: 14px;
+  margin-right: 20px;
 }
 
 .container h2 {
-  display: flex;
   color: rgb(221, 218, 208);
-  padding: 20px;
+  padding: 2px;
+  margin-right: 10px;
 }
 
 .container select {
@@ -30,6 +43,33 @@
   border-radius: 4px;
   box-shadow: 0px 0px 2px 1px rgba(128, 127, 125, 0.4);
 }
+
+.container button {
+  background-color: rgb(54, 24, 51);
+  border: none;
+  border-radius: 9px;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0px 0px 2px 1px rgba(128, 127, 125, 0.4);
+  color: aliceblue;
+  font-family: helvetica;
+
+}
+
+.container button:disabled {
+  opacity: 0.4;
+}
+
+.container input {
+  border-radius: 20px;
+  text-align: center;
+  border: none;
+  height: 30px;
+  margin-right: 10px;
+}
+
+
 
 .select-field option {
   padding: 5px;
@@ -57,19 +97,19 @@ select[multiple] option:checked {
 }
 
 .button {
-  background-color: rgb(234, 195, 20);
   text-decoration: none;
-  color: black;
-  padding: 6px 20px;
+  background-color: rgb(54, 24, 51);
   border: none;
-  font-family: Helvetica;
-  border-radius: 5px;
-  margin-left: 10px;
-  cursor: pointer;
-  font-size: 15px;
+  border-radius: 9px;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0px 0px 2px 1px rgba(128, 127, 125, 0.4);
+  color: aliceblue;
+  font-family: helvetica;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 .button:hover {
-  background-color: rgb(224, 208, 135);
+  background-color: rgb(74, 51, 72);
 }

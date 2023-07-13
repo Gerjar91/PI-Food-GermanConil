@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./serachBar.module.css";
-import { addAllRecipe, dietsFilter, hsOrderAlf, hsOrderAsc, hsOrderDes } from "../../Redux/actions";
+import { addAllRecipe, hsOrderAlf, hsOrderAsc, hsOrderDes, recipesByName } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
 
     const dispatch = useDispatch()
 
-    // en funcion de la option seleccionada despachamos la action adecuada 
+    // buscar por nombre de receta despachar la action para llamar al endpoint 
+    const [inputValue, setInputValue] = useState([])
+
+    const handlerInput = (event) => {
+        setInputValue(event.target.value)
+    }
+    const handlerSearch = () => {
+        dispatch(recipesByName(inputValue))
+        setInputValue("")
+    }
+
+
+    // Ordenar recetas en funcion de la option seleccionada despachamos la action adecuada 
     const handlerOptions = (event) => {
 
         switch (event.target.value) {
@@ -24,22 +36,28 @@ const SearchBar = () => {
                 return
         }
     }
-   
+
     return (
         <div className={style.container}>
-            <h2>Search recipe </h2>
-            <input type="text" />
-            <h2>Search for diets</h2>
-          
-            <p>ORDER RECIPES</p> {/* filtrar por recetas */}
-            <select onChange={handlerOptions}>
-                <option value="AllRecipes" >ALL RECIPES</option>
-                <option value="OrderAsc">HS ASCENDENTE</option>
-                <option value="OrderDes">HS DESCENDENTE</option>
-                <option value="OrderAlf" >A-Z</option>
-            </select>
-            <label>Create Recipe</label>
-            <Link className={style.button} to="/formRecipe">Create</Link>
+            <div>
+                <p>SEARCH RECIPE  🔍︎</p>
+                <input type="text" value={inputValue} onChange={handlerInput} placeholder="Search recipe..." />
+                <button onClick={handlerSearch} disabled={inputValue.length < 3} >Send</button>
+            </div>
+            <div>
+                <p>ORDER RECIPES</p> {/* filtrar por recetas */}
+                <select onChange={handlerOptions}>
+                    <option value="AllRecipes" >ALL RECIPES</option>
+                    <option value="OrderAsc">HS ASCENDENTE</option>
+                    <option value="OrderDes">HS DESCENDENTE</option>
+                    <option value="OrderAlf" >A-Z</option>
+                </select>
+            </div>
+            <div>
+                <p>CREATE RECIPE</p>
+                <Link className={style.button} to="/formRecipe">Create</Link>
+
+            </div>
             <Link className={style.button} to="/homePage">Home</Link>
         </div>
     );

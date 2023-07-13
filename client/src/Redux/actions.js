@@ -58,3 +58,15 @@ export const dietsFilter = (diets) => {
         payload: diets
     }
 }
+// actions para traer las recetas filtradas por nombre 
+export const recipesByName = (name) => {
+   const endpoint = `http://localhost:3001/recipes/name?name=${name}`;
+    return async function (dispatch) {
+        const response = await axios.get(endpoint)
+        return dispatch({
+            type: 'RECIPES_BY_NAME',
+            payload: response.data,
+        });
+        ;
+    };
+}

@@ -2,7 +2,8 @@
 const initialstate = {
     allRecipes: [],
     detailRecipe: [],
-    dietsFilter:[]
+    dietsFilter: [],
+    recipeByName: []
 }
 
 const reducer = (state = initialstate, { type, payload }) => {
@@ -17,23 +18,47 @@ const reducer = (state = initialstate, { type, payload }) => {
         case "REMOVE_DETAIL_RECIPE":
             return { ...state, detailRecipe: [] };
 
-        case "HEALTHSCORE_ORDER_ASC":
-            return { ...state, allRecipes: [...state.allRecipes].sort((a, b) => a.HC - b.HC) }
-
-        case "HEALTHSCORE_ORDER_DES":
-            return { ...state, allRecipes: [...state.allRecipes].sort((a, b) => b.HC - a.HC) }
-
-        case "HEALTHSCORE_ORDER_ALF":
+        case "HEALTHSCORE_ORDER_ASC": // ordenamos los estados por HS ascendente
+            const allRecipeOrderAs = [...state.allRecipes].sort((a, b) => a.HS - b.HS);
+            const allRecipeOrderBynameAs = [...state.recipeByName].sort((a, b) => a.HS - b.HS);
             return {
-                ...state, allRecipes: [...state.allRecipes].sort((a, b) => {
-                    if (a.name < b.name) { //extraemos comparamos los string 
-                        return -1
-                    }return 0  
-                })
+                ...state,
+                allRecipes: allRecipeOrderAs,
+                recipeByName: allRecipeOrderBynameAs,
+            }
+
+        case "HEALTHSCORE_ORDER_DES":// ordenamos los estados por HS descendente
+            const allRecipeOrderDs = [...state.allRecipes].sort((a, b) => b.HS - a.HS);
+            const allRecipeOrderByNameDs = [...state.recipeByName].sort((a, b) => b.HS - a.HS);
+            return {
+                ...state,
+                allRecipes: allRecipeOrderDs,
+                recipeByName: allRecipeOrderByNameDs,
+            }
+
+
+        case "HEALTHSCORE_ORDER_ALF":// ordenamos los estados por orden alfabetico
+            const allRecipeAlf = [...state.allRecipes].sort((a, b) => {
+                if (a.name < b.name) return -1
+                return 0
+            })
+            const allRecipeByNameAlf = [...state.allRecipes].sort((a, b) => {
+                if (a.name < b.name) return -1
+                return 0
+            })
+
+            return {
+                ...state,
+                allRecipes: allRecipeAlf,
+                recipeByName:allRecipeByNameAlf
             }
         case "FILTER_DIETS":
             return {
                 ...state, dietsFilter: payload
+            }
+        case "RECIPES_BY_NAME":
+            return {
+                ...state, recipeByName: payload
             }
         default:
             return state;
