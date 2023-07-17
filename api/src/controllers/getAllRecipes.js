@@ -2,10 +2,10 @@
 require('dotenv').config();
 const axios = require("axios");
 const { API_KEY } = process.env;
-const { Recipe } = require("../db");
-const { Op } = require('sequelize');
+const { Recipe, Diets } = require("../db");
 const fs = require('fs');
 const path = require('path');
+const { log } = require('console');
 
 const getAllRecipes = async (req, res) => {
     /* 
@@ -21,13 +21,39 @@ const getAllRecipes = async (req, res) => {
     const data = JSON.parse(rawData);
 
 
+    // buscamos todas las recetas de la BD y su relacion con el model Diets
+    const dataBD = await Recipe.findAll({
+        include: [{
+            model: Diets,
+            attributes: ['name'],
+        }]
+    });
+
+    const allRecipesBD = dataBD.map((recipe) => {
+        const { id, title, summary, image, healthScore, steps } = recipe.get();
+        const diets = recipe.diets.map((diet) => diet.name);
+        return {
+            id,
+            title,
+            summary,
+            image,
+            healthScore,
+            steps,
+            diets
+        };
+    });
+
+
+    // unificamos los reusltados de la BD y de la API
+    data.results.unshift(...allRecipesBD) // agregamos a la data 
+
     let allRecipes = data.results.map((el) => {
         return {
             id: el.id,
             name: el.title,
             image: el.image,
             diets: el.diets,
-            HS:el.healthScore
+            hs: el.healthScore
         }
     })
     return res.status(200).json(allRecipes);

@@ -33,7 +33,7 @@ const getDiets = async (req, res) => {
                 });
             });
             // cargamos los valores del array en la BD en la BDD 
-            if (count === 0) {
+             {
                 const response = await Diets.bulkCreate(alldiets.map((item) => {
                     return { name: item };
                 }));

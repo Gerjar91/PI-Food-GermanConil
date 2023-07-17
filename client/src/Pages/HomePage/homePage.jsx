@@ -1,36 +1,26 @@
-import React, { useState } from "react";
 import style from "./homePage.module.css";
 import CardPanel from "../../components/CardPanel/cardPanel";
 import FilterDiets from "../../components/FilterDiets/filterDiets";
-
+import { useEffect } from "react";
+import axios from "axios"
 
 const HomePage = () => {
 
-    //Handler para manipular el paginado 
-    const [numberPage, setNumberPage] = useState(0)
-    const handlerPageAdvance = () => {
-        setNumberPage(numberPage + 1)
-    }
-    const handlerPageBack = () => {
-        setNumberPage(numberPage - 1)
-    }
+    //  cargar todas las dietas de la api en la BD
+    const endpoint = `http://localhost:3001/diets`;
+    useEffect(async () => {
+        await axios (endpoint)
+    }, [])
+
+
+
+
+
     return (
         <div>
-
             <div className={style.container}>
-                <div className={style.containerNav}>
-                    <div className={style.nav}>
-                        <button onClick={handlerPageBack} disabled={numberPage === 0 ? true : false}>⇦</button>
-                        <h3>{`PAGE ${numberPage}`}</h3>
-                        <button
-                            onClick={handlerPageAdvance}
-                            disabled={numberPage === 11 ? true : false}
-                        >⇨</button>
-                    </div>
-                    <h1>🌽 🍅 🍕 SINGLE PAGE APPLICATION ABOUT FOOD 🌽 🍅 🍕</h1>
-                </div>
                 <div className={style.containerCard}>
-                    <CardPanel numberPage={numberPage} />
+                    <CardPanel />
                     <FilterDiets />
                 </div>
                 <div className={style.footer}>

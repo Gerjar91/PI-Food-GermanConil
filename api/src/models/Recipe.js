@@ -17,25 +17,25 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    image: {
-      type: DataTypes.STRING,
-      /*   allowNull: false, */ // podria cargarse sin imagen ? 
     },
     summary: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false, 
+    },
     healthScore: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+        allowNull: false, 
     },
     steps: {
       type: DataTypes.ARRAY(DataTypes.JSON),
-      allowNull: false,
+    /*   allowNull: false, */
     },
   }, { timestamps: false }); // eliminamos tablas por default 
 };

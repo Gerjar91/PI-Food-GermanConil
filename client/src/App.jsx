@@ -3,7 +3,7 @@ import LandingPage from './Pages/LandingPage/landingPage';
 import React from 'react';
 import HomePage from './Pages/HomePage/homePage';
 import SearchBar from './components/SearchBar/searchBar';
-import FormRecipe from './components/FormRecipe/formRecipe';
+import FormRecipe from './Pages/FormRecipePage/formRecipe';
 import DetailPage from './Pages/DetailPage/detailPage';
 
 function App() {

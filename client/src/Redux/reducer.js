@@ -19,8 +19,8 @@ const reducer = (state = initialstate, { type, payload }) => {
             return { ...state, detailRecipe: [] };
 
         case "HEALTHSCORE_ORDER_ASC": // ordenamos los estados por HS ascendente
-            const allRecipeOrderAs = [...state.allRecipes].sort((a, b) => a.HS - b.HS);
-            const allRecipeOrderBynameAs = [...state.recipeByName].sort((a, b) => a.HS - b.HS);
+            const allRecipeOrderAs = [...state.allRecipes].sort((a, b) => a.hs - b.hs);
+            const allRecipeOrderBynameAs = [...state.recipeByName].sort((a, b) => a.hs - b.hs);
             return {
                 ...state,
                 allRecipes: allRecipeOrderAs,
@@ -28,8 +28,8 @@ const reducer = (state = initialstate, { type, payload }) => {
             }
 
         case "HEALTHSCORE_ORDER_DES":// ordenamos los estados por HS descendente
-            const allRecipeOrderDs = [...state.allRecipes].sort((a, b) => b.HS - a.HS);
-            const allRecipeOrderByNameDs = [...state.recipeByName].sort((a, b) => b.HS - a.HS);
+            const allRecipeOrderDs = [...state.allRecipes].sort((a, b) => b.hs - a.hs);
+            const allRecipeOrderByNameDs = [...state.recipeByName].sort((a, b) => b.hs - a.hs);
             return {
                 ...state,
                 allRecipes: allRecipeOrderDs,
@@ -42,7 +42,7 @@ const reducer = (state = initialstate, { type, payload }) => {
                 if (a.name < b.name) return -1
                 return 0
             })
-            const allRecipeByNameAlf = [...state.allRecipes].sort((a, b) => {
+            const allRecipeByNameAlf = [...state.recipeByName].sort((a, b) => {
                 if (a.name < b.name) return -1
                 return 0
             })

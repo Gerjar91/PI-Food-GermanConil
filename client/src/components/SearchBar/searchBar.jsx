@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import style from "./serachBar.module.css";
 import { addAllRecipe, hsOrderAlf, hsOrderAsc, hsOrderDes, recipesByName } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
@@ -18,6 +18,13 @@ const SearchBar = () => {
         dispatch(recipesByName(inputValue))
         setInputValue("")
     }
+
+
+
+
+    // Lógica para condicionar la renderización del elemento de búsqueda
+    const location = useLocation();
+    const disableSearch = location.pathname !== "/homePage";
 
 
     // Ordenar recetas en funcion de la option seleccionada despachamos la action adecuada 
@@ -41,12 +48,12 @@ const SearchBar = () => {
         <div className={style.container}>
             <div>
                 <p>SEARCH RECIPE  🔍︎</p>
-                <input type="text" value={inputValue} onChange={handlerInput} placeholder="Search recipe..." />
-                <button onClick={handlerSearch} disabled={inputValue.length < 3} >Send</button>
+                <input type="text" value={inputValue} onChange={handlerInput} placeholder="Search recipe..." disabled={disableSearch}/>
+                <button onClick={handlerSearch} disabled={inputValue.length < 3 || disableSearch } >Send</button>
             </div>
             <div>
                 <p>ORDER RECIPES</p> {/* filtrar por recetas */}
-                <select onChange={handlerOptions}>
+                <select onChange={handlerOptions } disabled={disableSearch}>
                     <option value="AllRecipes" >ALL RECIPES</option>
                     <option value="OrderAsc">HS ASCENDENTE</option>
                     <option value="OrderDes">HS DESCENDENTE</option>

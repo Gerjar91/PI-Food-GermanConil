@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../Cards/card";
 import { Link } from "react-router-dom";
 
-const CardPanel = ({ numberPage }) => {
+const CardPanel = () => {
     const dispatch = useDispatch();
 
     let { allRecipes, dietsFilter, recipeByName } = useSelector((state) => state);
@@ -43,7 +43,24 @@ const CardPanel = ({ numberPage }) => {
         const array = recipes.slice(i, i + 9);
         allRecipesPage.push(array);
     }
-    
+
+
+    //Handler para manipular el paginado 
+    const [numberPage, setNumberPage] = useState(0)
+    const handlerPage = (event) => {
+        if (event.target.value === "adv") setNumberPage(numberPage + 1)
+        else setNumberPage(numberPage - 1)
+    }
+    const disableboton = {
+        adv: numberPage + 1 === allRecipesPage.length, // false o true 
+        back: numberPage === 0// false o true 
+    };
+
+
+
+
+
+
     if (recipes.length === 0 || recipeByName.error) {
         return (
             <div className={style.message}>
@@ -60,17 +77,35 @@ const CardPanel = ({ numberPage }) => {
         );
     }
     return (
-        <div className={style.containerCards}>
-            {allRecipesPage[numberPage].map((recipe) => (
-                <Link className={style.link} to={`/detailPage/${recipe.id}`} key={recipe.id}>
-                    <Card
-                        name={recipe.name}
-                        image={recipe.image}
-                        diets={recipe.diets}
-                        HS={recipe.HS}
-                    />
-                </Link>
-            ))}
+        <div>
+            <div className={style.nav}>
+                <button
+                    onClick={handlerPage}
+                    value="bac"
+                    disabled={disableboton.back}
+                >⇦</button>
+                <h3>{`PAGE ${numberPage}`}</h3>
+                <button
+                    onClick={handlerPage}
+                    disabled={disableboton.adv}
+                    value="adv"
+                >⇨</button>
+            </div>
+            <div className={style.containerCards}>
+
+                {allRecipesPage[numberPage].map((recipe) => (
+                    <Link className={style.link} to={`/detailPage/${recipe.id}`} key={recipe.id}>
+                        <Card
+                            id={recipe.id}
+                            name={recipe.name}
+                            image={recipe.image}
+                            diets={recipe?.diets}
+                            hs={recipe.hs}
+                        />
+                    </Link>
+                ))}
+
+            </div>
         </div>
     );
 };

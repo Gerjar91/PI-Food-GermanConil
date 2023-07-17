@@ -31,19 +31,14 @@ const getRecipesDetail = async (req, res) => {
                 summary: data.summary.replace(/<[^>]+>/g, ''), // remplazamos las etiquetas html del texto por " "
                 diets: data.diets,
                 healthScore: data.healthScore,
-                steps: data.analyzedInstructions[0]?.steps.map((elem) => {
-                    return {
-                        number: elem.number,
-                        step: elem.step,
-                        ingredients: elem.ingredients.map(obj => obj.name,
-                        )
-                    }
-                }
-                )
+                steps:[ data.analyzedInstructions[0]?.steps.reduce((result, elem) => {
+                    result[elem.number] = elem.step;
+                    return result;
+                }, {})]
             }
             return recipeApi ? res.status(200).json(recipeApi) : res.status(404).json("Not Found")
         }
-        
+     
         // SI NO ES TIPO NUMBER BUSCAMOS EN LAS RECETAS DE LA BDD 
         if (source == "bdd") {
             const recipeBdd = await Recipe.findAll({
@@ -53,7 +48,7 @@ const getRecipesDetail = async (req, res) => {
                     }
                 }
             })
-            return recipeBdd ? res.status(200).json(recipeBdd) : res.status(404).json("Not Found")
+            return recipeBdd ? res.status(200).json(recipeBdd[0]) : res.status(404).json("Not Found")
         }
 
     } catch (error) {

@@ -22,23 +22,33 @@ const DetailPage = () => {
 
 
 
-
-
-  if (detailRecipe.length === 0) {
-    return <div>Loading...</div>; // Mostrar mensaje de carga 
+  // renderizar los steps 
+  const stepsElements = []
+  if (detailRecipe.steps) {
+    for (const key in detailRecipe.steps[0]) {
+      stepsElements.push(
+        <div key={key} className={style.step}>
+          <p className={style.stepNumber}>{`STEP Nº: ${key}`}</p>
+          <h5>{detailRecipe.steps[0][key]}</h5>
+        </div>
+      );
+    }
   }
+
+
+
 
 
   return (
     <div className={style.container}>
       <div className={style.summary}>
-        <h1 >{detailRecipe.name}</h1>
+        <h1 >{detailRecipe.name || detailRecipe.title}</h1>
         {!detailRecipe.image ? <div className={style.loanding}>Loanding....</div> :
 
           <img src={detailRecipe.image} alt={detailRecipe.name} />
         }
         <h3>{detailRecipe?.summary}</h3>
-        <h2>HS: {detailRecipe.healthScore}</h2>
+        <h2>HS {detailRecipe.healthScore}</h2>
       </div>
       <div className={style.diets}>
         <h4>    DIETS: </h4>
@@ -46,15 +56,8 @@ const DetailPage = () => {
           <li key={index}> #{el}</li>
         ))}
       </div>
-
       <div className={style.containersteps}>
-        {detailRecipe.steps.map((el, index) => (
-          <div key={index} className={style.step}>
-            <p className={style.stepNumber}>{`Step Nº: ${el.number}`}</p>
-            <h5 >{`${el.step}`}</h5>
-            <h5 >{el.ingredients}</h5>
-          </div>
-        ))}
+        {stepsElements}
       </div>
     </div>
   );
