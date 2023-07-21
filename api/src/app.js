@@ -6,8 +6,8 @@ const routes = require('./routes/index.js');
 
 require('./db.js');
 
+//creamos el servidor 
 const server = express();
-
 server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));

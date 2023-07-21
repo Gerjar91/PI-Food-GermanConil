@@ -6,19 +6,24 @@ const {
   DB_USER, 
   DB_PASSWORD, 
   DB_HOST,
-  DB_NAME
+  DB_NAME,
+  DB_DEPLOY
 } = process.env;
 
 
 
-// conectar sequelize a la base de datos *******************************
-
+/* // conectar sequelize a la base de datos *******************************
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
   logging: false, // no sacar por consola la info 
   native: false, // 
 });
-
-
+ */
+ // conectar sequelize a la base de datos *******************************
+const sequelize = new Sequelize(DB_DEPLOY, {
+  logging: false, // no sacar por consola la info 
+  native: false, // 
+});
+ 
 
 
 const basename = path.basename(__filename);

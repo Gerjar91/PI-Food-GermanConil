@@ -11,7 +11,7 @@ const { API_KEY } = process.env;
 const { Diets } = require("../db");
 
 
-// diets que se encuantran aparte de item diets en la API 
+// Diets que se encuentran aparte de item diets en la API 
 const alldiets = [
     "vegetarian",
     "vegan",
@@ -32,16 +32,17 @@ const getDiets = async (req, res) => {
                     if (!alldiets.includes(dietsName)) alldiets.push(dietsName);
                 });
             });
-            // cargamos los valores del array en la BD en la BDD 
-             {
+            // cargamos los valores del array en la BD  
+            {
                 const response = await Diets.bulkCreate(alldiets.map((item) => {
                     return { name: item };
                 }));
                 return res.status(200).json(response);
             }
-        }else return res.status(400).json("La BDD ya esta cargada")
+        } else return res.status(200).json("La BDD ya esta cargada")
 
     } catch (error) {
+
         (error => res.status(400).send(error.message));
     }
 };

@@ -8,13 +8,13 @@ Debe funcionar tanto para las recetas de la API como para las de la base de dato
 require('dotenv').config();
 const axios = require("axios");
 const { API_KEY } = process.env;
-const { Recipe } = require("../db");
+const { Recipe, Diets } = require("../db");
 const { Op } = require('sequelize');
 
 
 const getRecipesDetail = async (req, res) => {
     try {
-        //recibimos el Id por query params 
+        //recibimos el Id por query 
         let id = req.params.id
 
         // verificamos el tipo de dato del ID (number o string )
@@ -30,15 +30,15 @@ const getRecipesDetail = async (req, res) => {
                 image: data.image,
                 summary: data.summary.replace(/<[^>]+>/g, ''), // remplazamos las etiquetas html del texto por " "
                 diets: data.diets,
-                healthScore: data.healthScore,
-                steps:[ data.analyzedInstructions[0]?.steps.reduce((result, elem) => {
+                hs: data.healthScore,
+                steps: data.analyzedInstructions[0]?.steps.reduce((result, elem) => {
                     result[elem.number] = elem.step;
                     return result;
-                }, {})]
+                }, {}) // cremaos un objeto vacio y cargamos la key y value en cada iteracion 
             }
             return recipeApi ? res.status(200).json(recipeApi) : res.status(404).json("Not Found")
         }
-     
+
         // SI NO ES TIPO NUMBER BUSCAMOS EN LAS RECETAS DE LA BDD 
         if (source == "bdd") {
             const recipeBdd = await Recipe.findAll({
@@ -46,9 +46,26 @@ const getRecipesDetail = async (req, res) => {
                     id: {
                         [Op.eq]: id // para realizar una comparación de igualdad en la columna id 
                     }
+                },
+                include: {
+                    model: Diets,
+                    attributes: ['name'],
                 }
             })
-            return recipeBdd ? res.status(200).json(recipeBdd[0]) : res.status(404).json("Not Found")
+
+            const recipesByNameBD = recipeBdd.map((recipe) => {
+                return {
+                    id: recipe.dataValues.id,
+                    name: recipe.dataValues.name,
+                    summary: recipe.dataValues.summary,
+                    image: recipe.dataValues.image,
+                    hs: recipe.dataValues.hs,
+                    steps: recipe.dataValues.steps,
+                    diets: recipe.dataValues.diets.map((diet) => diet.name)
+                };
+            }); 
+
+            return recipesByNameBD ? res.status(200).json(recipesByNameBD[0]) : res.status(404).json("Not Found")
         }
 
     } catch (error) {

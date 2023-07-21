@@ -14,13 +14,12 @@ const postRecipe = async (req, res) => {
         // creamos una nueva receta con lo que llega por  body 
         let { name, summary, image, hs, diets, steps } = req.body
         const newRecipe = await Recipe.create({
-            title: name,
+            name,
             image,
             summary,
-            healthScore: hs,
+            hs,
             steps
         })
-
 
         //relacionar con las diets de la base de dato 
         //buscamos en la BDD que diet coincide con la dieta ingresada
@@ -32,7 +31,6 @@ const postRecipe = async (req, res) => {
             }
         });
         await newRecipe.addDiets(dietsbd.map(diet => diet.id));
-
 
         return res.status(200).json(newRecipe)
     } catch (error) {
