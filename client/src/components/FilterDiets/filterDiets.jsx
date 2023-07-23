@@ -1,27 +1,26 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./filterDiets.module.css";
 import { dietsFilter } from "../../Redux/actions";
-import { useEffect, useState } from "react";
 
 const FilterDiets = () => {
-  const [check, setCheck] = useState([]);
-  const dispatch = useDispatch();
 
+  //traemos el estado global de filtros 
+  const check = useSelector((state) => state.dietsFilter)
+  const dispatch = useDispatch()
+
+  // cada ves que se seleccione un filtro lo despachamos con la action 
+  let setCheck = (newFilter) => dispatch(dietsFilter(newFilter));
+
+  // controlamos el input , por cada elemento que se marca o desmarca lo agregamos o filtramos
   const handlerDiets = (event) => {
     if (!check.includes(event.target.value) && event.target.value !== "") {
-      setCheck([...check, event.target.value]);
+      let newFilter = [...check, event.target.value]
+      setCheck(newFilter); // ejecutamos la funcion copiando los filtros anteriores y los nuevos 
     } else {
-      setCheck((prevCheck) => // si se vuelve a seleccionar la eliminamos de la lista 
-        prevCheck.filter((item) => item !== event.target.value)
-      );
+      const filteredList = check.filter((item) => item !== event.target.value)
+      setCheck(filteredList);
     }
   };
-
-  
-    //controlamos la actualizacion del estado Check y despachamos la action
-  useEffect(() => {
-    dispatch(dietsFilter(check));
-  }, [check, dispatch]);
 
   return (
     <div className={style.container}>

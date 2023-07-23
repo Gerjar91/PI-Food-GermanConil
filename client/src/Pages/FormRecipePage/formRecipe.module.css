@@ -1,12 +1,43 @@
 .recipeForm {
-    display:grid;
+    display: grid;
     height: 100dvb;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     margin-left: 60px;
+    justify-content: center;
+    text-align: center;
 
 }
-.inputGroup{
+.successMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(225, 152, 17);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+
+.recipeForm h1 {
+    font-size: 60px;
+    margin-bottom: -16px;
+    font-family: "helvetica";
+}
+
+.label{
+    color: rgb(255, 0, 0);
+    font-weight: 700;
+}
+.errorlabel {
+    color: rgb(0, 0, 0);
+}
+
+
+.inputGroup {
+    text-align: start;
     height: 180px;
     width: 320px;
     display: grid;
@@ -16,12 +47,13 @@
 
 }
 
-.recipeForm form{
+.recipeForm form {
     display: grid;
-    gap: 2px;
+    gap: 20px;
     grid-template-columns: repeat(3, 1fr);
 
 }
+
 .formTitle {
     font-size: 24px;
     margin-bottom: 20px;
@@ -36,12 +68,43 @@
     width: 300px;
 }
 
-.formGroup textarea{
+.formGroup textarea {
     height: 200px;
 }
+
 label {
     font-size: 16px;
     margin-bottom: 5px;
+}
+.buttoncreate{
+    margin-bottom: 40px;
+    margin-right: 60px;
+    background-color: #000;
+    color: #f0f0f0;
+    border: none;
+    height: 30px;
+    border-radius: 20px;
+    opacity: 0.4;
+    font-size: 16px;
+}
+.buttoncreate:hover{
+    opacity: 0.8;
+}
+.mensaje {
+    position: absolute;
+    background-color: rgb(217, 156, 25);
+    width: 500px;
+    color: #fff;
+    height: 250px;
+    margin-left: 850px;
+    margin-top: 100px;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
+    font-size: 27px;
+    font-family: helvetica;
+    font-weight: lighter;
+    margin-top: 40px;
 }
 
 .input,
@@ -70,8 +133,15 @@ label {
 .submitButton:hover {
     background-color: #222;
 }
-.container button{
+.submitButton:disabled{
+    opacity: 0.2;
+}
+.submitButton:disabled :hover{
+    opacity: 0.2;
+}
+
+.container button {
     width: 190px;
-    margin-top: 2px;
+    margin-top: -20px;
 
 }

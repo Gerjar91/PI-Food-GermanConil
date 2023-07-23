@@ -25,40 +25,49 @@ const DetailPage = () => {
   // renderizar los steps 
   const stepsElements = []
   if (detailRecipe.steps) {
-    for (const key in detailRecipe.steps[0]) {
+    for (const key in detailRecipe.steps) {
       stepsElements.push(
         <div key={key} className={style.step}>
           <p className={style.stepNumber}>{`STEP Nº: ${key}`}</p>
-          <h5>{detailRecipe.steps[0][key]}</h5>
+          <h5>{detailRecipe.steps[key]}</h5>
         </div>
       );
     }
+    console.log(detailRecipe);
   }
 
-
-
-
-
   return (
-    <div className={style.container}>
-      <div className={style.summary}>
-        <h1 >{detailRecipe.name || detailRecipe.title}</h1>
-        {!detailRecipe.image ? <div className={style.loanding}>Loanding....</div> :
 
-          <img src={detailRecipe.image} alt={detailRecipe.name} />
-        }
-        <h3>{detailRecipe?.summary}</h3>
-        <h2>HS {detailRecipe.healthScore}</h2>
-      </div>
-      <div className={style.diets}>
-        <h4>    DIETS: </h4>
-        {detailRecipe.diets?.map((el, index) => (
-          <li key={index}> #{el}</li>
-        ))}
-      </div>
-      <div className={style.containersteps}>
-        {stepsElements}
-      </div>
+    <div className={style.container}>
+      {!detailRecipe.image ?
+        (<div className={style.loanding}></div>
+        ) : (
+          <div>
+            <div className={style.summary}>
+              <h1 >{detailRecipe.name || detailRecipe.title}</h1>
+
+              <img src={detailRecipe.image} alt={detailRecipe.name} />
+
+              <h3>{detailRecipe?.summary}</h3>
+              <h2>HS {detailRecipe.hs}</h2>
+            </div>
+            <div className={style.diets}>
+              <h4>    DIETS: </h4>
+              {detailRecipe.diets?.map((el, index) => (
+                <li key={index}> #{el}</li>
+              ))}
+            </div>
+            <div className={style.containersteps}>
+              {stepsElements}
+            </div>
+
+          </div>)
+
+
+
+
+      }
+
     </div>
   );
 };

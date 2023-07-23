@@ -1,19 +1,14 @@
 import style from "./homePage.module.css";
 import CardPanel from "../../components/CardPanel/cardPanel";
 import FilterDiets from "../../components/FilterDiets/filterDiets";
-import { useEffect } from "react";
 import axios from "axios"
 
 const HomePage = () => {
 
     //  cargar todas las dietas de la api en la BD
     const endpoint = `http://localhost:3001/diets`;
-    useEffect(async () => {
-        await axios (endpoint)
-    }, [])
-
-
-
+    let diets = async () => { await axios(endpoint) }
+    diets()
 
 
     return (
@@ -25,9 +20,9 @@ const HomePage = () => {
                 </div>
                 <div className={style.footer}>
                     <div className={style.footerLeft}>
-                        <h3>Sobre Cookpad</h3>
+                        <h3>Sobre Cook-SPA</h3>
                         <p>
-                            En Cookpad, nuestra misión es hacer que la cocina diaria sea divertida.
+                            Nuestra misión es hacer que la cocina diaria sea divertida.
                             Creemos firmemente que cocinar es clave para que las personas, las
                             comunidades y el planeta tengan una vida más sana y más feliz. Empoderamos
                             a los que cada día cocinan desde casa en cualquier parte del mundo para

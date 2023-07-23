@@ -6,12 +6,13 @@ import axios from "axios"
 export const addAllRecipe = () => {
     const endpoint = `http://localhost:3001/recipes`;
     return async function (dispatch) {
-        const response = await axios.get(endpoint)
-        return dispatch({
-            type: 'ADD_ALL_RECIPE',
-            payload: response.data,
-        });
-        ;
+ 
+            const response = await axios.get(endpoint)
+            return dispatch({
+                type: 'ADD_ALL_RECIPE',
+                payload: response.data,
+            });
+       
     };
 };
 
@@ -28,28 +29,19 @@ export const addDetailRecipe = (id) => {
     };
 };
 
+//Ordernar Recipes
+export const orderRecipes = (orderFilter) => {
+    return {
+        type: "ORDER_RECIPES",
+        payload:orderFilter
+
+    }
+}
+
 // actions para eliminar estate de detail
 export const removeDetailRecipe = () => {
     return {
         type: "REMOVE_DETAIL_RECIPE",
-    }
-}
-// actions para ORDENAR el state por HC Ascendente
-export const hsOrderAsc = () => {
-    return {
-        type: "HEALTHSCORE_ORDER_ASC",
-    }
-}
-// actions para ORDENAR el state por HC Descendente
-export const hsOrderDes = () => {
-    return {
-        type: "HEALTHSCORE_ORDER_DES",
-    }
-}
-// actions para ORDENAR el state alfabeticamente 
-export const hsOrderAlf = () => {
-    return {
-        type: "HEALTHSCORE_ORDER_ALF",
     }
 }
 // actions para Filtrar por Diets
@@ -57,6 +49,13 @@ export const dietsFilter = (diets) => {
     return {
         type: "FILTER_DIETS",
         payload: diets
+    }
+}
+
+// actions para eliminar busqueda
+export const clearSearch = () => {
+    return {
+        type: "CLEAR_SEARCH",
     }
 }
 // actions para traer las recetas filtradas por nombre 

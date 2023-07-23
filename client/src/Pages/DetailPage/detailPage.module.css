@@ -57,10 +57,16 @@
     align-items: center;
 }
 .loanding{
-    background-color: aqua;
+    display: flex;
+    align-items: center;
+    margin-top: 200px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921");
+    margin-left: 400px;
     width:300px ;
     height: 200px;
+    justify-content: center;
 }
+
 .diets h4{
     color: #d5cdcd;
     margin: 0px;
@@ -86,7 +92,7 @@
 
 .step{
     background-color: #dee2e6;
-    width: 30%;
+    width: 31%;
     height: auto;
     padding: 8px;
     border-radius: 5px;
