@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/static/css/main.452c8570.chunk.css",
-    "main.js": "/static/js/main.a144f3e1.chunk.js",
-    "main.js.map": "/static/js/main.a144f3e1.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.2806fdfe.js",
-    "runtime-main.js.map": "/static/js/runtime-main.2806fdfe.js.map",
-    "static/js/2.a6337cc8.chunk.js": "/static/js/2.a6337cc8.chunk.js",
-    "static/js/2.a6337cc8.chunk.js.map": "/static/js/2.a6337cc8.chunk.js.map",
-    "static/js/3.da18a7b0.chunk.js": "/static/js/3.da18a7b0.chunk.js",
-    "static/js/3.da18a7b0.chunk.js.map": "/static/js/3.da18a7b0.chunk.js.map",
+    "main.js": "/static/js/main.3fdfa408.chunk.js",
+    "main.js.map": "/static/js/main.3fdfa408.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fbf668e8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fbf668e8.js.map",
+    "static/js/2.439ebec4.chunk.js": "/static/js/2.439ebec4.chunk.js",
+    "static/js/2.439ebec4.chunk.js.map": "/static/js/2.439ebec4.chunk.js.map",
+    "static/js/3.4a12cf81.chunk.js": "/static/js/3.4a12cf81.chunk.js",
+    "static/js/3.4a12cf81.chunk.js.map": "/static/js/3.4a12cf81.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.452c8570.chunk.css.map": "/static/css/main.452c8570.chunk.css.map",
-    "static/js/2.a6337cc8.chunk.js.LICENSE.txt": "/static/js/2.a6337cc8.chunk.js.LICENSE.txt",
+    "static/js/2.439ebec4.chunk.js.LICENSE.txt": "/static/js/2.439ebec4.chunk.js.LICENSE.txt",
     "static/media/landingPage.module.css": "/static/media/spaghetti-1932466_1280.78b61edc.jpg",
     "static/media/homePage.module.css": "/static/media/tabla-vacia-tablero-madera-delante-fondo-borroso-madera-marron-perspectiva-sobre-falta-definicion-cafeteria-puede-ser-utilizado-exhibicion-o-montaje-sus-productos-preparado-exhibicion-producto.38ce09da.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2806fdfe.js",
-    "static/js/2.a6337cc8.chunk.js",
+    "static/js/runtime-main.fbf668e8.js",
+    "static/js/2.439ebec4.chunk.js",
     "static/css/main.452c8570.chunk.css",
-    "static/js/main.a144f3e1.chunk.js"
+    "static/js/main.3fdfa408.chunk.js"
   ]
 }
