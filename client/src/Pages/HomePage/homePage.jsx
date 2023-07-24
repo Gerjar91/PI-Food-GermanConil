@@ -6,7 +6,7 @@ import axios from "axios"
 const HomePage = () => {
 
     //  cargar todas las dietas de la api en la BD
-    const endpoint = `http://localhost:3001/diets`;
+    const endpoint = `/diets`;
     let diets = async () => { await axios(endpoint) }
     diets()
 

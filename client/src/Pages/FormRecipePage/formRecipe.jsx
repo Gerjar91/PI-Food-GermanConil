@@ -97,7 +97,7 @@ const FormRecipe = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { name, summary, image, hs, diets, steps } = input;
-        const URL = 'http://localhost:3001/recipe/';
+        const URL = '/recipe/';
         await axios.post(URL, {
             name,
             summary,

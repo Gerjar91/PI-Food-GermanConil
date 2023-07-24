@@ -4,7 +4,7 @@ import axios from "axios"
 
 // actions para traer todas las recetas 
 export const addAllRecipe = () => {
-    const endpoint = `http://localhost:3001/recipes`;
+    const endpoint = `/recipes`;
     return async function (dispatch) {
  
             const response = await axios.get(endpoint)
@@ -18,7 +18,7 @@ export const addAllRecipe = () => {
 
 // actions para traer el detalle de una receta 
 export const addDetailRecipe = (id) => {
-    const endpoint = `http://localhost:3001/recipes/${id}`;
+    const endpoint = `/recipes/${id}`;
     return async function (dispatch) {
         const response = await axios.get(endpoint)
         return dispatch({
@@ -60,7 +60,7 @@ export const clearSearch = () => {
 }
 // actions para traer las recetas filtradas por nombre 
 export const recipesByName = (name) => {
-   const endpoint = `http://localhost:3001/recipes/name?name=${name}`;
+   const endpoint = `/recipes/name?name=${name}`;
     return async function (dispatch) {
         const response = await axios.get(endpoint)
         return dispatch({
