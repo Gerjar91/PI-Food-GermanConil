@@ -3,8 +3,8 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, 
-  DB_PASSWORD, 
+  DB_USER,
+  DB_PASSWORD,
   DB_HOST,
   DB_NAME,
   DB_DEPLOY
@@ -18,12 +18,17 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false, // 
 }); */
 
- // conectar sequelize a raliway s *******************************
+// conectar sequelize a raliway s *******************************
 const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // no sacar por consola la info 
-  native: false, // 
-}); 
- 
+  native: false,
+  dialectOptions: {
+    ssl: {
+      require: true
+    }
+  }
+});
+
 
 
 const basename = path.basename(__filename);
@@ -47,10 +52,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 
 // desestructuramos e importamos los modelos de sequelize 
-const { Recipe,Diets } = sequelize.models;
+const { Recipe, Diets } = sequelize.models;
 // Aca vendrian las relaciones
-Recipe.belongsToMany(Diets,{through:"recipe_diets"})
-Diets.belongsToMany(Recipe,{through:"recipe_diets"})
+Recipe.belongsToMany(Diets, { through: "recipe_diets" })
+Diets.belongsToMany(Recipe, { through: "recipe_diets" })
 
 
 module.exports = {
