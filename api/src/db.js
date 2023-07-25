@@ -22,13 +22,7 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // no sacar por consola la info 
   native: false,
-  dialectOptions: {
-    ssl: {
-      require: true
-    }
-  }
 });
-
 
 
 const basename = path.basename(__filename);
