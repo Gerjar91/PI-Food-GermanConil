@@ -14,9 +14,7 @@ const SearchBar = () => {
     //cargamos el estado con lo que entra en el input 
     const handlerInput = (event) => {
         setInputValue(event.target.value)
-        if (event.target.value.length >= 3) {
-            handlerSearch()
-        }
+        handlerSearch()
     }
     //despachamos la actions con el nombre al dar click 
     const handlerSearch = () => {
